@@ -1,5 +1,9 @@
 package aDomainname.appname.modulename;
-
+/** 
+ * Contains Configuration Annotation
+ * 
+ * @author dielan 
+ */
 
 import java.sql.SQLException;
 
@@ -29,6 +33,8 @@ import co.cast.generic.WebDriverUtitlity.UtilityClassObject;
 import co.cast.generic.WebDriverUtitlity.WebDriverUtility;
 
 public class BaseClass {
+	
+	/*creating object for utility*/
 public 	DatabaseUtility dlib=new DatabaseUtility();
 public 	ExcelUtility elib=new ExcelUtility();
 public 	FileUtility flib=new FileUtility();
