@@ -51,32 +51,36 @@ public WebDriver driver;
 	@BeforeClass
 	public void configBc() throws Throwable {
 		System.out.println("=====launch browser==== b c");
-	String browser=	flib.getDataFromPropertiesFile("browser");
+	//String BROWSER=	flib.getDataFromPropertiesFile("browser");
+		String BROWSER=System.getProperty("browser",flib.getDataFromPropertiesFile("url")); //if cmd is null property file
+		
 
-	if(browser.equals("chrome")) {
+	if(BROWSER.equals("chrome")) {
 		driver=new ChromeDriver();
-	}else if(browser.equals("firefox")) {
+	}else if(BROWSER.equals("firefox")) {
 		driver=new ChromeDriver();
-	}else if(browser.equals("edge")) {
+	}else if(BROWSER.equals("edge")) {
 		driver=new EdgeDriver();
 	}else {
 		driver=new ChromeDriver();
 	}
 	UtilityClassObject.setDriver(driver);
 	}
-	String url;
+	String URL;
 	@BeforeMethod
 	public void configBm() throws Exception {
 		System.out.println("====login to application === b m ");
 		wlib.WaitForPageToLoad(driver);
-           url=	flib.getDataFromPropertiesFile("url");
-	String un=flib.getDataFromPropertiesFile("username");
-	String pwd=flib.getDataFromPropertiesFile("password");
+		//String url=flib.getDataFromProperties("url");
+	//String un=flib.getDataFromPropertiesFile("username");
+	//String pwd=flib.getDataFromPropertiesFile("password");
+		 URL=System.getProperty("url",flib.getDataFromPropertiesFile("url"));
+	String USERNAME=System.getProperty("username",flib.getDataFromPropertiesFile("username"));
+	String PASSWORD=System.getProperty("password",flib.getDataFromPropertiesFile("password"));
 	
-	
-		driver.get(url);
+		driver.get(URL);
 		Login lo=new Login(driver);
-		lo.loginToApp(un, pwd);
+		lo.loginToApp(USERNAME, PASSWORD);
 		
 
 	}
