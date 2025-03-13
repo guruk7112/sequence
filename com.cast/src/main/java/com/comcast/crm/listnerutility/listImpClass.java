@@ -45,7 +45,7 @@ public class listImpClass implements ITestListener, ISuiteListener {
 		//null pointer exception if no replace on spacess
 		test.addScreenCaptureFromBase64String(filepath, testname + "-" + time);
 		
-		test.log(Status.PASS, result.getMethod().getMethodName()+"==FAILED==>");
+		test.log(Status.FAIL, result.getMethod().getMethodName()+"==FAILED==>");
 	}
 	
 	@Override
